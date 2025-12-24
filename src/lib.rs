@@ -25,8 +25,4 @@
 /// Widget module containing all the custom widgets provided by this library.
 ///
 /// This module will be expanded with additional widgets over time.
-pub mod widgets {
-    // Custom widgets for egui.
-    //
-    // This module provides various custom widgets that extend egui's functionality.
-}
+pub mod widgets {}
