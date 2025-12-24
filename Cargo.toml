@@ -1,8 +1,14 @@
 [package]
-name = "eframe_template"
+name = "extras-for-egui"
 version = "0.1.0"
-authors = ["Emil Ernerfeldt <emil.ernerfeldt@gmail.com>"]
+authors = ["Niccolò Sabatini <niccolo.sabatini@gmail.com>"]
 edition = "2024"
+description = "A collection of extra widgets and utilities for egui"
+repository = "https://github.com/itsNiccoloSabatini/extras-for-egui"
+homepage = "https://github.com/itsNiccoloSabatini/extras-for-egui"
+license = "MIT OR Apache-2.0"
+keywords = ["egui", "gui", "widgets", "ui"]
+categories = ["gui", "graphics"]
 include = ["LICENSE-APACHE", "LICENSE-MIT", "**/*.rs", "Cargo.toml"]
 rust-version = "1.88"
 
@@ -12,7 +18,9 @@ targets = ["x86_64-unknown-linux-gnu", "wasm32-unknown-unknown"]
 
 [dependencies]
 egui = "0.33.0"
-eframe = { version = "0.33.0", default-features = false, features = [
+
+# Optional dependencies for examples
+eframe = { version = "0.33.0", optional = true, default-features = false, features = [
     "accesskit",     # Make egui compatible with screen readers. NOTE: adds a lot of dependencies.
     "default_fonts", # Embed the default egui fonts.
     "glow",          # Use the glow rendering backend. Alternative: "wgpu".
@@ -20,19 +28,26 @@ eframe = { version = "0.33.0", default-features = false, features = [
     "wayland",       # To support Linux (and CI)
     "x11",           # To support older Linux distributions (restores one of the default features)
 ] }
-log = "0.4.27"
 
-# You only need serde if you want app persistence:
+[dev-dependencies]
+eframe = { version = "0.33.0", default-features = false, features = [
+    "accesskit",
+    "default_fonts",
+    "glow",
+    "persistence",
+    "wayland",
+    "x11",
+] }
 serde = { version = "1.0.219", features = ["derive"] }
 
-# native:
-[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+# native examples:
+[target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
 env_logger = "0.11.8"
 
-# web:
-[target.'cfg(target_arch = "wasm32")'.dependencies]
+# web examples:
+[target.'cfg(target_arch = "wasm32")'.dev-dependencies]
 wasm-bindgen-futures = "0.4.50"
-web-sys = "0.3.70"              # to access the DOM (to hide the loading text)
+web-sys = "0.3.70"
 
 [profile.release]
 opt-level = 2 # fast and small wasm
