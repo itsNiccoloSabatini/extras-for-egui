@@ -13,7 +13,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-extras-for-egui = "0.1.0"
+extras-for-egui = "0.1.0-alpha.1"
 egui = "0.33.0"
 ```
 

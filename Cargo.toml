@@ -1,6 +1,6 @@
 [package]
 name = "extras-for-egui"
-version = "0.1.0"
+version = "0.1.0-alpha.1"
 authors = ["Niccolò Sabatini <niccolo.sabatini@gmail.com>"]
 edition = "2024"
 description = "A collection of extra widgets and utilities for egui"
